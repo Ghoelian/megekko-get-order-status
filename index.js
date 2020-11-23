@@ -82,7 +82,7 @@ const getData = (auth) => {
 
     sheets.spreadsheets.values.get({
         spreadsheetId: process.env.SPREADSHEET_ID,
-        range: 'A2:C'
+        range: 'CPU!A2:C'
     }, (err, res) => {
         if (err) throw err
 
@@ -160,7 +160,7 @@ const getData = (auth) => {
 
                         sheets.spreadsheets.values.append({
                             spreadsheetId: process.env.SPREADSHEET_ID,
-                            range: 'A2:C',
+                            range: 'CPU!A2:C',
                             valueInputOption: 'USER_ENTERED',
                             requestBody: {
                                 values: [
