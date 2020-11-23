@@ -1,0 +1,22 @@
+{
+  "name": "megekkoorderqueue",
+  "version": "1.0.0",
+  "description": "Get order queue position",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ghoelian/MegekkoOrderQueue.git"
+  },
+  "author": "Julian Vos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ghoelian/MegekkoOrderQueue/issues"
+  },
+  "homepage": "https://github.com/Ghoelian/MegekkoOrderQueue#readme",
+  "dependencies": {
+    "node-html-parser": "^2.0.0"
+  }
+}
