@@ -1,6 +1,7 @@
 const https = require('https')
 const parser = require('node-html-parser')
 const querystring = require('querystring')
+const readline = require('readline')
 const fs = require('fs')
 
 require('dotenv').config()
@@ -121,6 +122,10 @@ const getData = (auth) => {
 
                     const root = parser.parse(data).childNodes
                     const positions = root[root.length - 3].rawText.match(regex)
+
+                    fs.writeFile('status', 'Last updated: ' + new Date(), (err) => {
+                        if (err) throw err
+                    })
 
                     if (positions[0] !== latest[1] || positions[1] !== latest[2]) {
                         const postData = querystring.stringify({
