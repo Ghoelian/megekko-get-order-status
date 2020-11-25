@@ -160,7 +160,7 @@ const getData = (auth) => {
 
                         sheets.spreadsheets.values.append({
                             spreadsheetId: process.env.SPREADSHEET_ID,
-                            range: 'CPU!A2:C',
+                            range: process.env.SPREADSHEET_SHEET + '!A2:C',
                             valueInputOption: 'USER_ENTERED',
                             requestBody: {
                                 values: [
