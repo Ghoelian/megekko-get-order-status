@@ -82,7 +82,7 @@ const getData = (auth) => {
 
     sheets.spreadsheets.values.get({
         spreadsheetId: process.env.SPREADSHEET_ID,
-        range: 'CPU!A2:C'
+        range: process.env.SPREADSHEET_SHEET + '!A2:C'
     }, (err, res) => {
         if (err) throw err
 
