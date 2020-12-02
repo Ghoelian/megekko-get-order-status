@@ -128,20 +128,22 @@ const getData = (auth) => {
                     })
 
                     if (positions[0] !== latest[1] || positions[1] !== latest[2]) {
-                        const postData = querystring.stringify({
-                            'type': 'note',
-                            'title': 'Megekko wachtrij positie: ' + positions[0],
-                            'body': 'Nieuwe positie: ' + positions[0]
-                        })
+                        if (positions[0] !== latest[1]) {
+                            const postData = querystring.stringify({
+                                'type': 'note',
+                                'title': 'Megekko wachtrij positie: ' + positions[0],
+                                'body': 'Nieuwe positie: ' + positions[0]
+                            })
 
-                        const postOptions = {
-                            hostname: 'api.pushbullet.com',
-                            port: 443,
-                            path: '/v2/pushes',
-                            method: 'POST',
-                            headers: {
-                                'Access-Token': process.env.PUSHBULLET_ACCESS_TOKEN,
-                                'Content-Type': 'application/json'
+                            const postOptions = {
+                                hostname: 'api.pushbullet.com',
+                                port: 443,
+                                path: '/v2/pushes',
+                                method: 'POST',
+                                headers: {
+                                    'Access-Token': process.env.PUSHBULLET_ACCESS_TOKEN,
+                                    'Content-Type': 'application/json'
+                                }
                             }
                         }
 
