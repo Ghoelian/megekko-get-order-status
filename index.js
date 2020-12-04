@@ -129,12 +129,6 @@ const getData = (auth) => {
 
                     if (positions[0] !== latest[1] || positions[1] !== latest[2]) {
                         if (positions[0] !== latest[1]) {
-                            const postData = querystring.stringify({
-                                'type': 'note',
-                                'title': 'Megekko wachtrij positie: ' + positions[0],
-                                'body': 'Nieuwe positie: ' + positions[0]
-                            })
-
                             const postOptions = {
                                 hostname: 'api.pushbullet.com',
                                 port: 443,
@@ -145,20 +139,20 @@ const getData = (auth) => {
                                     'Content-Type': 'application/json'
                                 }
                             }
-                        }
 
-                        const req = https.request(postOptions, (res) => {
-                            res.on('data', (data) => {
-                                process.stdout = data
+                            const req = https.request(postOptions, (res) => {
+                                res.on('data', (data) => {
+                                    process.stdout = data
+                                })
                             })
-                        })
-
-                        req.on('error', (err) => {
-                            console.error(err)
-                        })
-
-                        req.write(`{"type":"note","title":"Megekko wachtrij update","body":"Nieuwe positie: ${positions[0]}/${positions[1]}, voorheen ${latest[1]}/${latest[2]}"}`)
-                        req.end()
+    
+                            req.on('error', (err) => {
+                                console.error(err)
+                            })
+    
+                            req.write(`{"type":"note","title":"Megekko wachtrij update","body":"Nieuwe positie: ${positions[0]}/${positions[1]}, voorheen ${latest[1]}/${latest[2]}"}`)
+                            req.end()
+                        }
 
                         sheets.spreadsheets.values.append({
                             spreadsheetId: process.env.SPREADSHEET_ID,
